@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import re
+
+main = open ("WebExtract.txt", "r")
+fin = []
+
+writ = open ('10032.txt','w')
+
+for line in main:
+    # split the line by comma
+    temp = line.split(',');
+    
+    # create match objects
+    matchObj = re.match(r'"1"', temp[2], re.M | re.I)
+#    matchObj2 = re.match('"2013*', temp[13], re.M | re.I)
+    matchObj3 = re.match(r'"10032"', temp[5], re.M | re.I)
+#    print temp[5]
+    
+    # check matches and then write to file
+    if matchObj and matchObj3:
+#        print temp[2] 
+#        print temp[13]
+        writ.write(line)
+
+main.close()
+writ.close()
